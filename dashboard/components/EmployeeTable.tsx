@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Table,
   Thead,
@@ -50,7 +50,21 @@ function EmployeeTable() {
       const valueB = String(b[sortColumn]).toLowerCase();
       return sortOrder === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
     });
-
+    
+    useEffect(() => {
+      const fetchEmployees = async () => {
+        try {
+          const response = await fetch('http://localhost:3001/api/employees'); // URL da sua API
+          const data = await response.json();
+          setEmployees(data);
+        } catch (error) {
+          console.error('Erro ao buscar funcionários:', error);
+        }
+      };
+  
+      fetchEmployees();
+    }, []);
+    
   return (
     <>
       <InputGroup mb={4}>
