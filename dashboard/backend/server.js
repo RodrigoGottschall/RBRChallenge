@@ -8,7 +8,13 @@ const employeeRoutes = require('./routes/employeeRoutes');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+// Configuração do CORS
+const corsOptions = {
+  origin: 'http://localhost:3000', // Substitua pela URL do seu frontend Next.js
+  optionsSuccessStatus: 200, // alguns navegadores (como o IE11) precisam disso
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use('/api/employees', employeeRoutes);
 
