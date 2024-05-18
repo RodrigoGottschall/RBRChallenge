@@ -71,14 +71,12 @@ const EmployeeTable = () => {
             <Th onClick={() => handleSortClick('nome')}>
               Nome {sortColumn === 'nome' && (sortOrder === 'asc' ? <TriangleUpIcon /> : <TriangleDownIcon />)}
             </Th>
-            {/* ... (outros cabeçalhos da tabela) */}
           </Tr>
         </Thead>
         <Tbody>
           {getSortedEmployees().map((employee) => (
             <Tr key={employee.id}>
               <Td>{employee.nome}</Td>
-              {/* ... (outros campos da tabela) */}
             </Tr>
           ))}
         </Tbody>
