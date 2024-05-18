@@ -12,7 +12,7 @@ const app = express();
 app.use(cors(config.corsOptions));
 app.use(express.json());
 app.use('/api/employees', employeeRoutes);
-app.use(errorHandler); // Use o middleware de erro
+app.use(errorHandler);
 
 const startServer = async () => {
   try {
