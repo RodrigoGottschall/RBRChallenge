@@ -8,7 +8,6 @@ Pré-requisitos
 - MongoDB instalado e em execução localmente
 
 
-
 **Configuração do Backend**
 
 1. Clonar o Repositório:
@@ -104,8 +103,8 @@ Backend:
 
 **Próximos Passos**
 
-Adicionar mais validação de dados no frontend e no backend.
-Implementar autenticação e autorização para proteger a aplicação.
-Adicionar mais funcionalidades ao dashboard, como gráficos, relatórios, etc.
-Melhorar a interface do usuário com mais recursos do Chakra UI.
-Escrever testes automatizados para garantir a qualidade do código.
+- Adicionar mais validação de dados no frontend e no backend.
+- Implementar autenticação e autorização para proteger a aplicação.
+- Adicionar mais funcionalidades ao dashboard, como gráficos, relatórios, etc.
+- Melhorar a interface do usuário com mais recursos do Chakra UI.
+- Escrever testes automatizados para garantir a qualidade do código.
