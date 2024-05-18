@@ -2,21 +2,32 @@
 
 import { useEffect, useState } from 'react';
 import {
-  Table, Thead, Tbody, Tr, Th, Td, Button, Input, InputGroup, InputLeftElement,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Button,
+  Input,
+  InputGroup,
+  InputLeftElement,
 } from '@chakra-ui/react';
 import { SearchIcon, TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
+import Link from 'next/link';
 
 interface Employee {
-  id: number;
+  _id: string; // Use _id para o ID do MongoDB
   nome: string;
   cargo: string;
   departamento: string;
+  dataAdmissao: string;
 }
 
 const EmployeeTable = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortColumn, setSortColumn] = useState('');
+  const [sortColumn, setSortColumn] = useState<keyof Employee>('nome');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
   useEffect(() => {
@@ -34,7 +45,7 @@ const EmployeeTable = () => {
   }, []);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value.toLowerCase()); // Convertendo para minúsculo para uma busca que não diferencia maiúsculas de minúsculas
+    setSearchTerm(event.target.value.toLowerCase());
   };
 
   const handleSortClick = (column: keyof Employee) => {
@@ -49,7 +60,7 @@ const EmployeeTable = () => {
           String(value).toLowerCase().includes(searchTerm)
         )
       )
-      .sort((a, b) => {
+      .sort((a: Employee, b: Employee) => {
         const valueA = String(a[sortColumn]).toLowerCase();
         const valueB = String(b[sortColumn]).toLowerCase();
         return sortOrder === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
@@ -71,12 +82,31 @@ const EmployeeTable = () => {
             <Th onClick={() => handleSortClick('nome')}>
               Nome {sortColumn === 'nome' && (sortOrder === 'asc' ? <TriangleUpIcon /> : <TriangleDownIcon />)}
             </Th>
+            <Th onClick={() => handleSortClick('cargo')}>
+              Cargo {sortColumn === 'cargo' && (sortOrder === 'asc' ? <TriangleUpIcon /> : <TriangleDownIcon />)}
+            </Th>
+            <Th onClick={() => handleSortClick('departamento')}>
+              Departamento {sortColumn === 'departamento' && (sortOrder === 'asc' ? <TriangleUpIcon /> : <TriangleDownIcon />)}
+            </Th>
+            <Th>Ações</Th>
           </Tr>
         </Thead>
         <Tbody>
           {getSortedEmployees().map((employee) => (
-            <Tr key={employee.id}>
+            <Tr key={employee._id}> {/* Use _id como chave */}
               <Td>{employee.nome}</Td>
+              <Td>{employee.cargo}</Td>
+              <Td>{employee.departamento}</Td>
+              <Td>
+                <Link href={`/edit-employee/${employee._id}`}>
+                  <Button colorScheme="yellow" size="sm" mr={2}>
+                    Editar
+                  </Button>
+                </Link>
+                <Button colorScheme="red" size="sm">
+                  Excluir
+                </Button>
+              </Td>
             </Tr>
           ))}
         </Tbody>
