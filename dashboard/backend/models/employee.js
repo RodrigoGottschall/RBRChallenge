@@ -7,4 +7,5 @@ const employeeSchema = new mongoose.Schema({
   dataAdmissao: { type: Date, required: true },
 });
 
-module.exports = mongoose.model('Employee', employeeSchema);
+module.exports = mongoose.model('Employee', employeeSchema, 'main'); // Terceiro argumento especifica o nome da coleção
+
