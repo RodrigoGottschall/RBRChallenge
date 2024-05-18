@@ -1,6 +1,6 @@
 import { Flex, Heading } from '@chakra-ui/react';
-import EmployeeTable from './components/EmployeeTable';
-import AddEmployeeButton from './components/AddEmployeeButton';
+import EmployeeTable from './app/components/EmployeeTable';
+import AddEmployeeButton from './app/components/AddEmployeeButton';
 
 export default function Home() {
   return (
