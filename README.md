@@ -61,6 +61,7 @@ Excluir Funcionário: Clique no botão "Excluir" na linha do funcionário que vo
 
 **Estrutura do Projeto**
 
+```
 projeto
 ├── backend
 │   ├── controllers
@@ -86,7 +87,7 @@ projeto
 │   ├── next.config.mjs
 │   └── package.json
 └── README.md
-
+```
 
 
 **Tecnologias Utilizadas**
