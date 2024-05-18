@@ -7,7 +7,7 @@ Pré-requisitos
 - Node.js e npm (ou yarn) instalados
 - MongoDB instalado e em execução localmente
 
-*Configuração do Backend*
+**Configuração do Backend**
 
 1.Clonar o Repositório: 
     #git clone <URL_DO_SEU_REPOSITÓRIO> #cd backend
@@ -28,7 +28,7 @@ MONGODB_URI=mongodb://127.0.0.1:27017/seu-banco-de-dados
 
 O servidor backend será iniciado em http://localhost:3001 (ou na porta que você configurou).
 
-*Configuração do Frontend*
+**Configuração do Frontend**
 
 1. Navegar para a Pasta do Frontend:
 
@@ -44,7 +44,7 @@ yarn dev
 
 O servidor frontend será iniciado em http://localhost:3000.
 
-*Uso da Aplicação*
+**Uso da Aplicação**
 
 Acesse o dashboard em http://localhost:3000.
 Adicionar Funcionário: Clique no botão "Adicionar Funcionário" e preencha o formulário.
