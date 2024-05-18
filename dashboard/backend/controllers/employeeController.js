@@ -27,26 +27,38 @@ exports.getEmployeeById = async (req, res) => {
 exports.createEmployee = async (req, res) => {
   try {
     const employee = new Employee(req.body);
-    await employee.save();
-    res.status(201).json(employee);
+    const savedEmployee = await employee.save();
+    res.status(201).json(savedEmployee);
   } catch (error) {
-    res.status(400).json({ error: error.message }); // Bad Request
+    // Verificar se é um erro de validação do Mongoose
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({ error: error.message });
+    }
+    res.status(500).json({ error: error.message });
   }
 };
 
 // Atualizar um funcionário pelo ID
 exports.updateEmployee = async (req, res) => {
   try {
-    const employee = await Employee.findByIdAndUpdate(req.params.id, req.body, {
-      new: true, // Retornar o documento atualizado
-      runValidators: true, // Validar os dados antes de atualizar
-    });
-    if (!employee) {
+    const employeeToUpdate = await Employee.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true, // Retornar o documento atualizado
+        runValidators: true, // Validar os dados antes de atualizar
+      }
+    );
+    if (!employeeToUpdate) {
       return res.status(404).json({ error: 'Funcionário não encontrado' });
     }
-    res.json(employee);
+    res.json(employeeToUpdate);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    // Verificar se é um erro de validação do Mongoose
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({ error: error.message });
+    }
+    res.status(500).json({ error: error.message });
   }
 };
 
