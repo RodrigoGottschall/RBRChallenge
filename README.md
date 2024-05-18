@@ -9,38 +9,34 @@ Pré-requisitos
 
 **Configuração do Backend**
 
-1.Clonar o Repositório: 
-    #git clone <URL_DO_SEU_REPOSITÓRIO> #cd backend
+1. Clonar o Repositório: 
+   git clone https://github.com/RodrigoGottschall/RBRChallenge.git
+   cd backend
 
-2. Instalar Dependências: 
-    #yarn install
+3. Instalar Dependências: 
+    yarn install
 
-3. Configurar Variáveis de Ambiente:
-
+4. Configurar Variáveis de Ambiente:
 - Crie um arquivo .env na raiz da pasta backend.
 - Adicione a seguinte linha ao arquivo .env, substituindo seu-banco-de-dados pelo nome do seu banco de dados MongoDB:
 
 MONGODB_URI=mongodb://127.0.0.1:27017/seu-banco-de-dados
 
 4. Iniciar o Servidor:
-
-    #yarn dev
+    yarn dev
 
 O servidor backend será iniciado em http://localhost:3001 (ou na porta que você configurou).
 
 **Configuração do Frontend**
 
 1. Navegar para a Pasta do Frontend:
-
-cd ../frontend
+    cd ../frontend
 
 2. Instalar Dependências:
-
-yarn install
+    yarn install
 
 3. Iniciar o Servidor de Desenvolvimento:
-   
-yarn dev
+    yarn dev
 
 O servidor frontend será iniciado em http://localhost:3000.
 
@@ -51,7 +47,7 @@ Adicionar Funcionário: Clique no botão "Adicionar Funcionário" e preencha o f
 Editar Funcionário: Clique no botão "Editar" na linha do funcionário que você deseja editar.
 Excluir Funcionário: Clique no botão "Excluir" na linha do funcionário que você deseja excluir.
 
-Estrutura do Projeto
+**Estrutura do Projeto**
 
 projeto
 ├── backend
@@ -79,7 +75,7 @@ projeto
 │   └── package.json
 └── README.md
 
-Tecnologias Utilizadas
+**Tecnologias Utilizadas**
 
 Frontend:
     Next.js 14 (App Router)
@@ -91,7 +87,7 @@ Backend:
     MongoDB
     Mongoose
 
-Próximos Passos
+**Próximos Passos**
 
 Adicionar mais validação de dados no frontend e no backend.
 Implementar autenticação e autorização para proteger a aplicação.
