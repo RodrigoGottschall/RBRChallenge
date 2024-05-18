@@ -4,23 +4,25 @@ Este projeto é um dashboard simples para gerenciar funcionários, construído c
 
 Pré-requisitos
 
-    Node.js e npm (ou yarn) instalados
-    MongoDB instalado e em execução localmente
+- Node.js e npm (ou yarn) instalados
+- MongoDB instalado e em execução localmente
 
 Configuração do Backend
 
-1.Clonar o Repositório: #git clone <URL_DO_SEU_REPOSITÓRIO> #cd backend
+1.Clonar o Repositório: 
+    #git clone <URL_DO_SEU_REPOSITÓRIO> #cd backend
 
-    Instalar Dependências: #yarn install
+2. Instalar Dependências: 
+    #yarn install
 
-    Configurar Variáveis de Ambiente:
+3. Configurar Variáveis de Ambiente:
 
-    Crie um arquivo .env na raiz da pasta backend.
-    Adicione a seguinte linha ao arquivo .env, substituindo seu-banco-de-dados pelo nome do seu banco de dados MongoDB:
+- Crie um arquivo .env na raiz da pasta backend.
+- Adicione a seguinte linha ao arquivo .env, substituindo seu-banco-de-dados pelo nome do seu banco de dados MongoDB:
 
 MONGODB_URI=mongodb://127.0.0.1:27017/seu-banco-de-dados
 
-    Iniciar o Servidor:
+4. Iniciar o Servidor:
 
     #yarn dev
 
