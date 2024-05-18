@@ -9,10 +9,12 @@ export default function Home() {
   return (
     <Flex direction="column" p={8}>
       <Heading mb={4}>Dashboard</Heading>
+
       <Link href="/add-employee">
         <AddEmployeeButton />
       </Link>
-      <EmployeeTable />
+      
+      <EmployeeTable /> 
     </Flex>
   );
 }

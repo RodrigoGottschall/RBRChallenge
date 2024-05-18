@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Este projeto é um dashboard simples para gerenciar funcionários, construído com Next.js 14 (App Router), TypeScript, Chakra UI para o frontend e Node.js com Express.js e MongoDB (Mongoose) para o backend.`
 
-## Getting Started
+Pré-requisitos
+- Node.js e npm (ou yarn) instalados
+- MongoDB instalado e em execução localmente
 
-First, run the development server:
+Configuração do Backend
 
-```bash
-npm run dev
-# or
+1.Clonar o Repositório:
+    #git clone <URL_DO_SEU_REPOSITÓRIO>
+    #cd backend
+
+2. Instalar Dependências:
+    #yarn install
+
+3. Configurar Variáveis de Ambiente:
+- Crie um arquivo .env na raiz da pasta backend.
+- Adicione a seguinte linha ao arquivo .env, substituindo seu-banco-de-dados pelo nome do seu banco de dados MongoDB:
+
+MONGODB_URI=mongodb://127.0.0.1:27017/seu-banco-de-dados
+
+4. Iniciar o Servidor:
+
+    #yarn dev
+
+O servidor backend será iniciado em http://localhost:3001 (ou na porta que você configurou).
+
+Configuração do Frontend
+
+    Navegar para a Pasta do Frontend:
+    Bash
+
+    cd ../frontend
+
+    Use code with caution.
+
+Instalar Dependências:
+Bash
+
+yarn install
+
+Use code with caution.
+
+Iniciar o Servidor de Desenvolvimento:
+Bash
+
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Use code with caution.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    O servidor frontend será iniciado em http://localhost:3000.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Uso da Aplicação
 
-## Learn More
+    Acesse o dashboard em http://localhost:3000.
+    Adicionar Funcionário: Clique no botão "Adicionar Funcionário" e preencha o formulário.
+    Editar Funcionário: Clique no botão "Editar" na linha do funcionário que você deseja editar.
+    Excluir Funcionário: Clique no botão "Excluir" na linha do funcionário que você deseja excluir.
 
-To learn more about Next.js, take a look at the following resources:
+Estrutura do Projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+projeto
+├── backend
+│   ├── controllers
+│   │   └── employeeController.js
+│   ├── models
+│   │   └── employee.js
+│   ├── routes
+│   │   └── employeeRoutes.js
+│   ├── config.js
+│   ├── errorMiddleware.js
+│   └── server.js
+├── frontend
+│   ├── app
+│   │   ├── add-employee.tsx
+│   │   ├── components
+│   │   │   ├── AddEmployeeButton.tsx
+│   │   │   └── EmployeeTable.tsx
+│   │   ├── edit-employee
+│   │   │   └── [id].tsx
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── public
+│   ├── next.config.mjs
+│   └── package.json
+└── README.md
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Tecnologias Utilizadas
 
-## Deploy on Vercel
+    Frontend:
+        Next.js 14 (App Router)
+        TypeScript
+        Chakra UI
+    Backend:
+        Node.js
+        Express.js
+        MongoDB
+        Mongoose
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Próximos Passos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    Adicionar mais validação de dados no frontend e no backend.
+    Implementar autenticação e autorização para proteger a aplicação.
+    Adicionar mais funcionalidades ao dashboard, como gráficos, relatórios, etc.
+    Melhorar a interface do usuário com mais recursos do Chakra UI.
+    Escrever testes automatizados para garantir a qualidade do código.
