@@ -12,12 +12,19 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
 } from '@chakra-ui/react';
-import { SearchIcon, TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
+import { SearchIcon, TriangleDownIcon, TriangleUpIcon, DeleteIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
+import React from 'react';
 
 interface Employee {
-  _id: string; // Use _id para o ID do MongoDB
+  _id: string;
   nome: string;
   cargo: string;
   departamento: string;
@@ -29,6 +36,11 @@ const EmployeeTable = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortColumn, setSortColumn] = useState<keyof Employee>('nome');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [employeeIdToDelete, setEmployeeIdToDelete] = useState('');
+  const onClose = () => setIsOpen(false);
+  const cancelRef = React.useRef(null);
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -67,8 +79,53 @@ const EmployeeTable = () => {
       });
   };
 
+  const handleDelete = async (employeeId: string) => {
+    setIsOpen(true);
+    setEmployeeIdToDelete(employeeId);
+  };
+
+  const onDeleteConfirm = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/employees/${employeeIdToDelete}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        setEmployees(employees.filter((employee) => employee._id !== employeeIdToDelete));
+        onClose();
+      } else {
+        console.error('Erro ao excluir funcionário:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Erro ao excluir funcionário:', error);
+    }
+  };
+
   return (
     <>
+      <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+              Excluir Funcionário
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              Tem certeza que deseja excluir este funcionário?
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onClose}>
+                Cancelar
+              </Button>
+              <Button colorScheme='red' onClick={onDeleteConfirm} ml={3}>
+                Excluir
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
+
       <InputGroup mb={4}>
         <InputLeftElement pointerEvents="none">
           <SearchIcon color="gray.300" />
@@ -93,7 +150,7 @@ const EmployeeTable = () => {
         </Thead>
         <Tbody>
           {getSortedEmployees().map((employee) => (
-            <Tr key={employee._id}> {/* Use _id como chave */}
+            <Tr key={employee._id}>
               <Td>{employee.nome}</Td>
               <Td>{employee.cargo}</Td>
               <Td>{employee.departamento}</Td>
@@ -103,8 +160,8 @@ const EmployeeTable = () => {
                     Editar
                   </Button>
                 </Link>
-                <Button colorScheme="red" size="sm">
-                  Excluir
+                <Button colorScheme="red" size="sm" onClick={() => handleDelete(employee._id)}>
+                  <DeleteIcon />
                 </Button>
               </Td>
             </Tr>
