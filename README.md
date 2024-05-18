@@ -7,7 +7,7 @@ Pré-requisitos
 - Node.js e npm (ou yarn) instalados
 - MongoDB instalado e em execução localmente
 
-Configuração do Backend
+*Configuração do Backend*
 
 1.Clonar o Repositório: 
     #git clone <URL_DO_SEU_REPOSITÓRIO> #cd backend
@@ -28,30 +28,23 @@ MONGODB_URI=mongodb://127.0.0.1:27017/seu-banco-de-dados
 
 O servidor backend será iniciado em http://localhost:3001 (ou na porta que você configurou).
 
-Configuração do Frontend
+*Configuração do Frontend*
 
-Navegar para a Pasta do Frontend:
-Bash
+1. Navegar para a Pasta do Frontend:
 
 cd ../frontend
 
-Use code with caution.
-
-Instalar Dependências: Bash
+2. Instalar Dependências:
 
 yarn install
 
-Use code with caution.
-
-Iniciar o Servidor de Desenvolvimento: Bash
-
+3. Iniciar o Servidor de Desenvolvimento:
+   
 yarn dev
-
-Use code with caution.
 
 O servidor frontend será iniciado em http://localhost:3000.
 
-Uso da Aplicação
+*Uso da Aplicação*
 
 Acesse o dashboard em http://localhost:3000.
 Adicionar Funcionário: Clique no botão "Adicionar Funcionário" e preencha o formulário.
@@ -60,7 +53,31 @@ Excluir Funcionário: Clique no botão "Excluir" na linha do funcionário que vo
 
 Estrutura do Projeto
 
-projeto ├── backend │ ├── controllers │ │ └── employeeController.js │ ├── models │ │ └── employee.js │ ├── routes │ │ └── employeeRoutes.js │ ├── config.js │ ├── errorMiddleware.js │ └── server.js ├── frontend │ ├── app │ │ ├── add-employee.tsx │ │ ├── components │ │ │ ├── AddEmployeeButton.tsx │ │ │ └── EmployeeTable.tsx │ │ ├── edit-employee │ │ │ └── [id].tsx │ │ ├── layout.tsx │ │ └── page.tsx │ ├── public │ ├── next.config.mjs │ └── package.json └── README.md
+projeto
+├── backend
+│   ├── controllers
+│   │   └── employeeController.js
+│   ├── models
+│   │   └── employee.js
+│   ├── routes
+│   │   └── employeeRoutes.js
+│   ├── config.js
+│   ├── errorMiddleware.js
+│   └── server.js
+├── frontend
+│   ├── app
+│   │   ├── add-employee.tsx
+│   │   ├── components
+│   │   │   ├── AddEmployeeButton.tsx
+│   │   │   └── EmployeeTable.tsx
+│   │   ├── edit-employee
+│   │   │   └── [id].tsx
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── public
+│   ├── next.config.mjs
+│   └── package.json
+└── README.md
 
 Tecnologias Utilizadas
 
